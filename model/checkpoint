@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\Darrshana\\Documents\\ML Project\\Food-Calories-Estimation-Using-Image-Processing-master\\model\\Fruits_dectector-0.001-5conv-basic.model"
+all_model_checkpoint_paths: "C:\\Users\\Darrshana\\Documents\\ML Project\\Food-Calories-Estimation-Using-Image-Processing-master\\model\\Fruits_dectector-0.001-5conv-basic.model"
