@@ -4,6 +4,11 @@ from random import shuffle # mixing up or currently ordered data that might lead
 import glob
 import cv2
 from cnn_model import get_model
+from sklearn.model_selection import cross_val_predict
+from sklearn.metrics import confusion_matrix
+from sklearn import metrics
+import matplotlib.pyplot as plt
+
 
 path = r'./FOODD/train/'
 IMG_SIZE = 400
@@ -47,9 +52,27 @@ test_y = [i[1] for i in test]
 
 model=get_model(IMG_SIZE,no_of_fruits,LR)
 
+
 model.fit({'input': X}, {'targets': Y}, n_epoch=10, validation_set=({'input': test_x}, {'targets': test_y}), 
     snapshot_step=500, show_metric=True, run_id=MODEL_NAME)
 
 model_save_at=os.path.join("model",MODEL_NAME)
 model.save(model_save_at)
 print("Model Save At",model_save_at)
+
+categories = ["Apple","tomato","Banana","Onion","Orange","Bread"]
+
+y_pred=model.predict(test_x)
+from sklearn.metrics import confusion_matrix
+from sklearn import metrics
+print(metrics.confusion_matrix(test_y, y_pred,labels=["Apple", "Orange"]))
+cf_matrix = confusion_matrix(test_y, y_pred)
+print(cf_matrix)
+import seaborn as sns
+#xlabel = [""]
+print(sns.heatmap(cf_matrix,xticklabels=categories,yticklabels=categories, annot=True))
+#make_confusion_matrix(cf_matrix,categories=categories)
+plt.title("Confusion Matrix")
+plt.show()
+
+

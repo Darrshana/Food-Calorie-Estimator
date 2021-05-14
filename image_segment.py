@@ -5,7 +5,7 @@ import os
 def getAreaOfFood(img1):
     data=os.path.join(os.getcwd(),"images")
     if os.path.exists(data):
-        print('folder exist for images at ',data)
+        print('')
     else:
         os.mkdir(data)
         print('folder created for images at ',data)
@@ -123,3 +123,4 @@ if __name__ == '__main__':
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+ 
